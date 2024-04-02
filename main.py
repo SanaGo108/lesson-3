@@ -21,6 +21,7 @@ target_y = random.randint(0, SCREEN_HEIGHT - target_height)
 color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
 score = 0
+misses = 0
 
 font = pygame.font.Font(None, 36)
 
@@ -36,10 +37,14 @@ while running:
                 score += 1
                 target_x = random.randint(0, SCREEN_WIDTH - target_width)
                 target_y = random.randint(0, SCREEN_HEIGHT - target_height)
+            else:
+                misses += 1
     screen.blit(target_img, (target_x, target_y))
 
     score_text = font.render(f"Счет: {score}", True, (255, 255, 255))
+    misses_text = font.render(f"Промахи: {misses}", True, (255, 255, 255))
     screen.blit(score_text, (10, 10))
+    screen.blit(misses_text, (10, 50))
 
     pygame.display.update()
 
